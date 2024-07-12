@@ -1,0 +1,57 @@
+name: 'Release'
+
+on:
+  push:
+    branches:
+      - 'main'
+
+env:
+  NODE_VERSION: 20
+
+jobs:
+  build-test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{env.NODE_VERSION}}
+          cache: 'npm'
+
+      - name: NPM Install
+        run: npm ci
+
+      - name: NPM Lint
+        run: npm run lint
+
+      - name: NPM Test
+        run: npm test
+
+  newRelease:
+    name: Create New Release
+    needs: [build-test]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{env.NODE_VERSION}}
+          cache: 'npm'
+
+      - name: NPM Install
+        run: npm ci
+
+      - name: Release
+        run: npm run semantic-release
+        env:
+          GITHUB_TOKEN: ${{secrets.GLOBAL_GITHUB_TOKEN}}
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+          CI: true

@@ -18,7 +18,9 @@
     "test:watch": "mocha test --recursive --watch",
     "test:coverage": "nyc npm run test",
     "check": "npm run lint && npm run test:coverage",
-    "prepare": "husky"
+    "prepare": "husky",
+    "semantic-release": "semantic-release",
+    "semantic-release:dry": "semantic-release --dry-run"
   },
   "keywords": [
     "PDF",

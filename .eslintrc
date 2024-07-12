@@ -1,7 +1,5 @@
 {
-  "extends": [
-    "@opengovsg/eslint-config-opengovsg"
-  ],
+  "extends": ["@opengovsg/eslint-config-opengovsg"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 6,
@@ -12,14 +10,11 @@
     "es6": true,
     "jasmine": true
   },
-  "plugins": [
-    "jasmine",
-    "flowtype",
-    "flowtype-comment"
-  ],
+  "plugins": ["jasmine", "flowtype", "flowtype-comment"],
   "rules": {
     "no-console": 1,
-    "no-underscore-dangle": 1
+    "no-underscore-dangle": 1,
+    "no-null/no-null": "off"
   },
   "settings": {
     "flowtype": {

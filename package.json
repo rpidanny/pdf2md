@@ -13,7 +13,7 @@
     "/types"
   ],
   "scripts": {
-    "lint": "eslint lib --cache",
+    "lint": "eslint --debug lib --cache",
     "test": "mocha test --recursive",
     "test:watch": "mocha test --recursive --watch",
     "test:coverage": "nyc npm run test",

@@ -1,0 +1,16 @@
+name: 'PR Nudger'
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 7 * * *'
+
+jobs:
+  Nudge:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: 'write'
+    steps:
+      - uses: rpidanny/gha-pr-nudger@v1
+        with:
+          days: '5'
+          includeDependabot: 'true'

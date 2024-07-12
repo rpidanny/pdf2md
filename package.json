@@ -7,6 +7,9 @@
   "bin": {
     "pdf2md": "lib/pdf2md-cli.js"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "/lib",
     "/test",
